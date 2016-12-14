@@ -1,0 +1,56 @@
+<div><legend align="center"><h1>Add New unique Department</h1></legend><br></div>
+<table>
+    <thead>
+    <tr>
+        <th>Department ID</th>
+        <th>Department Name</th>
+        <th>Room Number</th>
+        <th>Phone Number</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="department in departments">
+        <td>{{department.depID}}</td>
+        <td>{{department.depName}}</td>
+        <td>{{department.roomNumber}}</td>
+        <td>{{department.phone}}</td>
+        <td> <a href="" ng-click="removeDepartment($index)">Delete</a></td>
+        <td><a href="" ng-click="selectEdit($index)">Edit</a></td>
+    </tr>
+    </tbody>
+</table>
+<br/><br/>
+<div>
+<form name="addDepartment" novalidate ng-submit="addDepartment.$valid && addNewDep()">
+    <table class="update">
+        <tr>
+            <td class="aa">Department Name:</td>
+            <td><input type="text" ng-model="depName" name="depName" required>
+                <span class="error" ng-show="addDepartment.depName.$error.required">
+       Required!</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="aa">Room Number :</td>
+            <td><input type="number" ng-model="roomNumber" name="roomNumber" required>
+                <span class="error" ng-show="addDepartment.roomNumber.$error.required">
+       Required!</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="aa">Phone Number :</td>
+            <td><input type="number" ng-model="phone" name="phoneNumber" required>
+                <span class="error" ng-show="addDepartment.phoneNumber.$error.required">
+       Required!</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="btn"><input type="submit" value="Add"></td>
+            <td class="btn"><button ng-click="save()" type="button">Save</button></td>
+        </tr>
+    </table>
+</form>
+<h1>All inputs are completed: <span ng-class="{'green':addDepartment.$valid}">{{addDepartment.$valid}}</span></h1>
+</div>

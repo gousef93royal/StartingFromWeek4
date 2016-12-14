@@ -1,0 +1,18 @@
+<div>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Country</th>
+        <th>Department ID</th>
+    </tr>
+    <tr ng-repeat="employee in EmpInformation">
+        <td>{{employee.empID}}</td>
+        <td>{{employee.empName}}</td>
+        <td>{{employee.empEmail}}</td>
+        <td>{{employee.empCountry}}</td>
+        <td>{{employee.depID}}</td>
+    </tr>
+</table>
+</div>

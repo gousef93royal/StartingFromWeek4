@@ -1,0 +1,28 @@
+<div>
+<table>
+    <thead>
+    <tr>
+        <th>Task ID</th>
+        <th>Task Name</th>
+        <th>Department ID</th>
+        <th>Employee ID</th>
+        <th>Completion Days</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="task in TaskInformation">
+        <td>{{task.taskID}}</td>
+        <td>{{task.taskName}}</td>
+        <td>{{task.depID}}</td>
+        <td>
+            <ul ng-repeat="emp in task.empID">
+                <li>
+                    {{emp}}
+                </li>
+            </ul>
+        </td>
+        <td>{{task.completionDate}}</td>
+    </tr>
+    </tbody>
+</table>
+</div>

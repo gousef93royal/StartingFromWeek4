@@ -1,0 +1,28 @@
+<div>
+<table>
+    <thead>
+    <tr>
+        <th>Department ID</th>
+        <th>Department Name</th>
+        <th>Employee ID</th>
+        <th>Room Number</th>
+        <th>Phone Number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="department in DepInformation">
+        <td>{{department.depID}}</td>
+        <td>{{department.depName}}</td>
+        <td>
+            <ul ng-repeat="emp in department.empID">
+                <li>
+                    {{emp}}
+                </li>
+            </ul>
+        </td>
+        <td>{{department.roomNumber}}</td>
+        <td>{{department.phone}}</td>
+    </tr>
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,71 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+body {
+  font-family: Arial;
+}
+
+table {
+  border-collapse: collapse;
+  display: inline-table;
+}
+
+td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+th {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: left;
+}
+a:hover{color: black}
+.container
+{
+  width:80%;
+  margin: 0 auto;
+}
+.aa
+{
+  background-color: #DDDDDD;
+}
+.update{margin-left:5px}
+.btn{border: none}
+button{background-color: #b3d4fc}
+.ng-dirty.ng-valid
+{
+  border-color: green;
+}
+.ng-dirty.ng-invalid
+{
+  border-color: red;
+}
+span{color: red}
+.green
+{
+  color: green;
+}
