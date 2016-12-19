@@ -1,5 +1,8 @@
 /* app css stylesheet */
-
+*
+{
+  font-family: 'Ubuntu', sans-serif;
+}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -54,18 +57,12 @@ a:hover{color: black}
   background-color: #DDDDDD;
 }
 .update{margin-left:5px}
-.btn{border: none}
-button{background-color: #b3d4fc}
-.ng-dirty.ng-valid
-{
-  border-color: green;
-}
-.ng-dirty.ng-invalid
-{
-  border-color: red;
-}
 span{color: red}
 .green
 {
   color: green;
+}
+.full-width
+{
+  width:100%;
 }
