@@ -1,56 +1,69 @@
-<div><legend align="center"><h1>Add New unique Department</h1></legend><br></div>
-<table>
-    <thead>
-    <tr>
-        <th>Department ID</th>
-        <th>Department Name</th>
-        <th>Room Number</th>
-        <th>Phone Number</th>
-        <th>Delete</th>
-        <th>Edit</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="department in departments">
-        <td>{{department.depID}}</td>
-        <td>{{department.depName}}</td>
-        <td>{{department.roomNumber}}</td>
-        <td>{{department.phone}}</td>
-        <td> <a href="" ng-click="removeDepartment($index)">Delete</a></td>
-        <td><a href="" ng-click="selectEdit($index)">Edit</a></td>
-    </tr>
-    </tbody>
-</table>
-<br/><br/>
-<div>
-<form name="addDepartment" novalidate ng-submit="addDepartment.$valid && addNewDep()">
-    <table class="update">
+<div class="row">
+    <div class="col-xs-6 ">
+        <label>by ID :</label>
+        <input type="text" placeholder="Search by ID" ng-model="searchName.depID" class="form-control">
+    </div>
+    <div class="col-xs-6 ">
+        <label> by Name :</label>
+        <input type="text" placeholder="Search by Name" ng-model="searchName.depName" class="form-control">
+    </div>
+    <div class="col-xs-6 ">
+        <label>by Room Num :</label>
+        <input type="text" placeholder="Search by Room Number" ng-model="searchName.roomNumber" class="form-control">
+    </div>
+    <div class="col-xs-6 ">
+        <label>by Phone :</label>
+        <input type="text" placeholder="Search by Phone" ng-model="searchName.phone" class="form-control">
+    </div>
+</div>
+<br>
+<div class="table-responsive">
+    <table class="table">
         <tr>
-            <td class="aa">Department Name:</td>
-            <td><input type="text" ng-model="depName" name="depName" required>
-                <span class="error" ng-show="addDepartment.depName.$error.required">
-       Required!</span>
-            </td>
+            <th>ID</th>
+            <th>Department Name</th>
+            <th>Room Number</th>
+            <th>Phone Number</th>
+            <th>Delete</th>
+            <th>Edit</th>
         </tr>
-        <tr>
-            <td class="aa">Room Number :</td>
-            <td><input type="number" ng-model="roomNumber" name="roomNumber" required>
-                <span class="error" ng-show="addDepartment.roomNumber.$error.required">
-       Required!</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="aa">Phone Number :</td>
-            <td><input type="number" ng-model="phone" name="phoneNumber" required>
-                <span class="error" ng-show="addDepartment.phoneNumber.$error.required">
-       Required!</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="btn"><input type="submit" value="Add"></td>
-            <td class="btn"><button ng-click="save()" type="button">Save</button></td>
+        <tr ng-repeat="department in departments | filter:searchName">
+            <td>{{department.depID}}</td>
+            <td>{{department.depName}}</td>
+            <td>{{department.roomNumber}}</td>
+            <td>{{department.phone}}</td>
+            <td><button type="button" ng-click="removeEmp($index)" class="btn btn-danger full-width">Delete</button></td>
+            <td><button type="button" ng-click="selectEdit($index)" class="btn btn-info full-width">Edit</button></td>
         </tr>
     </table>
+</div>
+<br/>
+<div>
+<form name="addDepartment" novalidate ng-submit="addDepartment.$valid && addNewDep()">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label>Department Name:</label>
+            <input type="text" ng-model="depName" name="depName" class="form-control" required>
+            <span class="error" ng-show="addDepartment.depName.$error.required">
+       Required!</span>
+        </div>
+        <div class="form-group">
+            <label>Room Number :</label>
+            <input type="number" ng-model="roomNumber" name="roomNumber" class="form-control" required>
+            <span class="error" ng-show="addDepartment.roomNumber.$error.required">
+       Required!</span>
+        </div>
+        <div class="form-group">
+            <label>Phone Number :</label>
+            <input type="number" ng-model="phone" name="phoneNumber" class="form-control" required>
+            <span class="error" ng-show="addDepartment.phoneNumber.$error.required">
+       Required!</span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Add</button>
+            <button ng-click="save()" type="button" class="btn btn-default">Save</button>
+        </div>
+    </div>
 </form>
 <h1>All inputs are completed: <span ng-class="{'green':addDepartment.$valid}">{{addDepartment.$valid}}</span></h1>
 </div>
