@@ -1,49 +1,55 @@
-<fieldset>
-    <div><legend align="center"><h1>Add New unique Task</h1></legend><br></div>
-</fieldset>
-<table>
-    <thead>
-    <tr>
-        <th>Task ID</th>
-        <th>Task Name</th>
-        <th>Completion Days</th>
-        <th>Delete</th>
-        <th>Edit</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="task in tasks">
-        <td>{{task.taskID}}</td>
-        <td>{{task.taskName}}</td>
-        <td>{{task.completionDate}}</td>
-        <td> <a href="" ng-click="removeTask($index)">Delete</a></td>
-        <td><a href="" ng-click="selectEdit($index)">Edit</a></td>
-    </tr>
-    </tbody>
-</table>
-<br/><br/>
-<div>
+<div class="row">
+    <div class="col-xs-4 ">
+        <label>by ID :</label>
+        <input type="text" placeholder="Search by ID" ng-model="searchName.taskID" class="form-control">
+    </div>
+    <div class="col-xs-4 ">
+        <label> by Name :</label>
+        <input type="text" placeholder="Search by Name" ng-model="searchName.taskName" class="form-control">
+    </div>
+    <div class="col-xs-4 ">
+        <label>by Completion Days :</label>
+        <input type="text" placeholder="Search by Completion Days" ng-model="searchName.completionDate" class="form-control">
+    </div>
+</div>
+<br>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Task Name</th>
+            <th>Completion Days</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+        <tr ng-repeat="task in tasks| filter:searchName">
+            <td>{{task.taskID}}</td>
+            <td>{{task.taskName}}</td>
+            <td>{{task.completionDate}}</td>
+            <td><button type="button" ng-click="removeTask($index)" class="btn btn-danger full-width">Delete</button></td>
+            <td><button type="button" ng-click="selectEdit($index)" class="btn btn-info full-width">Edit</button></td>
+        </tr>
+    </table>
+</div>
+<br/>
     <form name="addTask" novalidate ng-submit="addTask.$valid && addNewTask()">
-        <table class="update">
-            <tr>
-                <td class="aa">Task Name:</td>
-                <td><input type="text" name="taskname" ng-model="taskName" required>
-                    <span class="error" ng-show="addTask.taskname.$error.required">
-       Required!</span>
-
-                </td>
-            </tr>
-            <tr>
-                <td class="aa">Completion Date:</td>
-                <td><input type="number" name="completiondate" ng-model="completionDate" required>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label>Task Name:</label>
+                <input type="text" name="taskname" ng-model="taskName" class="form-control" required>
+                <span class="error" ng-show="addTask.taskname.$error.required">
+                Required!</span>
+            </div>
+            <div class="form-group">
+                <label>Completion Date:</label>
+                <input type="number" name="completiondate" ng-model="completionDate" class="form-control" required>
                 <span class="error" ng-show="addTask.completiondate.$error.required">
-       Required!</span>
-            </tr>
-            <tr>
-                <td class="btn"><input type="submit" value="Add"></td>
-                <td class="btn"><button ng-click="save()" type="button">Save</button></td>
-            </tr>
-        </table>
+                 Required!</span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Add</button>
+                <button ng-click="save()" type="button" class="btn btn-default">Save</button>
+            </div>
+        </div>
     </form>
     <h1>All inputs are completed: <span ng-class="{'green':addTask.$valid}">{{addTask.$valid}}</span></h1>
-</div>
